@@ -6,7 +6,7 @@ set -o errexit
 
 if [[ -z "$KERNEL_VERSION" ]]; then
   if vercmp "$KUBERNETES_VERSION" gteq "1.23.0"; then
-    KERNEL_VERSION=5.10
+    KERNEL_VERSION=5.15
   else
     KERNEL_VERSION=5.4
   fi
@@ -19,6 +19,8 @@ elif [[ $KERNEL_VERSION == "5.4" ]]; then
   sudo amazon-linux-extras install -y kernel-5.4
 elif [[ $KERNEL_VERSION == "5.10" ]]; then
   sudo amazon-linux-extras install -y kernel-5.10
+elif [[ $KERNEL_VERSION == "5.15" ]]; then
+  sudo amazon-linux-extras install -y kernel-5.15
 else
   echo "$KERNEL_VERSION is not a valid kernel version"
   exit 1
